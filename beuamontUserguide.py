@@ -10,12 +10,13 @@ import pandas as pd
 from chatlas import ChatGoogle
 import hashlib
 import os
+import sys
 from datetime import datetime
 
 # -------------------------------
 # Global Configuration
 # -------------------------------
-BASE_DIR = Path(__file__).parent.resolve()
+BASE_DIR = Path(__file__).parent.absolute()  # Changed to absolute() for cloud compatibility
 LAB_DOCS_DIR = BASE_DIR / "lab_docs"
 DEPARTMENT_FILES = {
     "Chemical Pathology": "chemical_pathology.docx",
@@ -27,6 +28,39 @@ DEPARTMENT_FILES = {
     "NHISSOT (H&I)": "NHISSOT.docx",
     "Test Repertoire": "Test_Repertoire.docx"
 }
+
+# -------------------------------
+# Debugging Functions
+# -------------------------------
+def verify_environment():
+    """Debug environment and document verification"""
+    debug_info = {
+        "Python Version": sys.version,
+        "Current Directory": str(Path.cwd()),
+        "Base Directory": str(BASE_DIR),
+        "LAB_DOCS_DIR": {
+            "Path": str(LAB_DOCS_DIR),
+            "Exists": LAB_DOCS_DIR.exists(),
+            "Files Found": [f.name for f in LAB_DOCS_DIR.glob("*")] if LAB_DOCS_DIR.exists() else []
+        },
+        "Required Files": list(DEPARTMENT_FILES.values()),
+        "Missing Files": [
+            f for f in DEPARTMENT_FILES.values() 
+            if not (LAB_DOCS_DIR / f).exists()
+        ]
+    }
+    
+    with st.expander("Environment Debug Information"):
+        st.json(debug_info)
+    
+    if not LAB_DOCS_DIR.exists():
+        st.error(f"Critical Error: Lab docs directory not found at {LAB_DOCS_DIR}")
+        st.stop()
+    
+    missing_files = debug_info["Missing Files"]
+    if missing_files:
+        st.error(f"Missing required documents: {', '.join(missing_files)}")
+        st.stop()
 
 # -------------------------------
 # Configuration
@@ -259,6 +293,8 @@ def display_chat_history():
 # Main Application
 # -------------------------------
 def main():
+    verify_environment()  # First check environment
+    
     # Initialize session
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -271,7 +307,12 @@ def main():
     st.title("🧬 LabMate Pro")
     st.markdown("**ISO 15189:2022 & LP-GEN-0016 Compliant Laboratory Assistant**")
 
-    departments = load_all_departments()
+    try:
+        departments = load_all_departments()
+    except Exception as e:
+        st.error(f"Failed to load departments: {str(e)}")
+        st.stop()
+    
     selected_dept = render_department_selector(departments)
     
     if "current_dept" not in st.session_state or st.session_state.current_dept != selected_dept:
@@ -308,7 +349,7 @@ def handle_user_input(prompt, department, departments):
             - Tables: {json.dumps(departments[department]['tables'][:1])}
             """
             
-            response_stream = st.session_state.chat.stream(full_query)  # Remove context parameter
+            response_stream = st.session_state.chat.stream(full_query)
             
             response_placeholder = st.empty()
             full_response = []
@@ -350,8 +391,4 @@ def handle_error(e):
     log_audit_entry("SYSTEM ERROR", error_msg, "GLOBAL")
 
 if __name__ == "__main__":
-    if not all((LAB_DOCS_DIR / f).exists() for f in DEPARTMENT_FILES.values()):
-        st.error("Missing protocol documents - contact Lab Manager")
-        st.stop()
-    
     main()
