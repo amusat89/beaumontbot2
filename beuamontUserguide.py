@@ -21,7 +21,7 @@ LAB_DOCS_DIR = BASE_DIR / "lab_docs"
 DEPARTMENT_FILES = {
     "Chemical Pathology": "chemical_pathology.docx",
     "Immunology": "immunology.docx",
-    "Microbiology": "Microbiology.docx",
+    "Microbiology": "microbiology.docx",
     "Haematology": "Haematology.docx",
     "Histopathology": "Histopathology.docx",
     "Molecular Pathology": "Molecular_pathology.docx",
@@ -53,11 +53,16 @@ def verify_environment():
     with st.expander("Environment Debug Information"):
         st.json(debug_info)
     
+# -------------------------------
+# Modified Debugging Functions
+# -------------------------------
+def verify_environment():
+    """Silent environment verification"""
     if not LAB_DOCS_DIR.exists():
         st.error(f"Critical Error: Lab docs directory not found at {LAB_DOCS_DIR}")
         st.stop()
     
-    missing_files = debug_info["Missing Files"]
+    missing_files = [f for f in DEPARTMENT_FILES.values() if not (LAB_DOCS_DIR / f).exists()]
     if missing_files:
         st.error(f"Missing required documents: {', '.join(missing_files)}")
         st.stop()
