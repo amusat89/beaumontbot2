@@ -21,7 +21,7 @@ LAB_DOCS_DIR = BASE_DIR / "lab_docs"
 DEPARTMENT_FILES = {
     "Chemical Pathology": "chemical_pathology.docx",
     "Immunology": "immunology.docx",
-    "Microbiology": "microbiology.docx",
+    "Microbiology": "Microbiology.docx",
     "Haematology": "Haematology.docx",
     "Histopathology": "Histopathology.docx",
     "Molecular Pathology": "Molecular_pathology.docx",
