@@ -26,7 +26,8 @@ DEPARTMENT_FILES = {
     "Histopathology": "Histopathology.docx",
     "Molecular Pathology": "Molecular_pathology.docx",
     "NHISSOT (H&I)": "NHISSOT.docx",
-    "Test Repertoire": "Test_Repertoire.docx"
+    "Test Repertoire": "Test_Repertoire.docx",
+    "External Referral": "ExternallyReferrredTests.docx"
 }
 
 # -------------------------------
