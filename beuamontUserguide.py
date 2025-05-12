@@ -310,6 +310,8 @@ def main():
         ).hexdigest()[:12]
     
     st.title("🧬 LabMate Pro")
+    URL = "https://www.beaumont.ie/themes/custom/beaumont_barrio/logo.png"
+    st.logo("https://www.beaumont.ie/themes/custom/beaumont_barrio/logo.png", link=URL)
     st.markdown("**ISO 15189:2022 & LP-GEN-0016 Compliant Laboratory Assistant**")
 
     try:
