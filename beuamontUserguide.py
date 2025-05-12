@@ -173,16 +173,22 @@ def generate_system_prompt(selected_dept, dept_content):
 ## Response Requirements (ISO 15189 §7.11)
 Always provide test details using the format below, dynamically adjusting based on available fields and test-specific context. 
 
-**Must format your response in a bulleted points as follow:**
+**Must format your response in a bulleted points as follow for Test Repertoire:**
 
-**Test Name**: {{"test_name"}}
-**Specimen**: {{"sample_type"}}
+**Test Name**: {{"test_name or test_description"}}
+**Mnemonics**: {{"mnemonics"}}
+**Specimen**: {{"sample_type or sample_type on label and label code description"}}
 **Container**: {{"container_color"}}
+**Separate or Whole Blood**: {{"SEP or WB"}}
+**Storage**: {{"storage"}}
 **Minimum Volume**: {{"volume"}}
 **Method**: {{"methodology"}}
 **Reference Range**: {{"reference_values"}}
 **Turnaround Time**: {{"turnaround_time"}}
-**Special Notes**: {{"critical_info"}}
+**Special Notes**: {{"comment, conditions or restriction"}}
+**Laboratory Department**: {{"laboratory_department"}}
+
+
 
 *Only include fields present in the relevant table.*
 
