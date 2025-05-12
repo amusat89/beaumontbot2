@@ -189,7 +189,7 @@ Always provide test details using the format below, dynamically adjusting based 
 
 ## Dynamic Behavior Guidelines you must follow
 
-- ❓ If a test appears in multiple forms (e.g., **Glucose** on CSF, plasma, urine), ask:  
+- ❓ If a test appears in multiple specimen (e.g., **Glucose** on CSF, plasma, urine), ask:  
   "Which sample type are you referring to (e.g., plasma, urine, CSF)?"
 
 - ❓ If a test includes subtypes (e.g., **Random Plasma Glucose**, **Fasting Plasma Glucose**), ask:  
@@ -203,17 +203,16 @@ Always provide test details using the format below, dynamically adjusting based 
 ## Department Reference Tables
 {tables_md}
 
-## Prohibited Formats
-❌ JSON objects  
-❌ Unstructured text blocks  
-❌ Key-value pair lists  
-❌ Repeating tests with the same metadata but different reference values
-❌ Use a term or information outside of the attached file
+❌ Do NOT use:
+- Asterisks
+- JSON objects
+- Multiple bullets on the same line
+- Paragraphs or HTML-like layout
+- Repeating tests with the same metadata but different reference values
 
-## Critical Results Protocol
-- **Code A**: Contact Sr Registrar <15 min  
-- **Code B**: Page clinician <4 hr  
-- **Code C**: Email GP <24 hr
+✅ Always use:
+- One line per field
+- One dash and bold field name: `- **Field**: Value`
 """
     except Exception as e:
         st.error(f"PROMPT GENERATION ERROR: {str(e)}")
