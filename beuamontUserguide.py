@@ -19,13 +19,6 @@ from datetime import datetime
 BASE_DIR = Path(__file__).parent.absolute()  # Changed to absolute() for cloud compatibility
 LAB_DOCS_DIR = BASE_DIR / "lab_docs"
 DEPARTMENT_FILES = {
-    "Chemical Pathology": "chemical_pathology.docx",
-    "Immunology": "immunology.docx",
-    "Microbiology": "Microbiology.docx",
-    "Haematology": "Haematology.docx",
-    "Histopathology": "Histopathology.docx",
-    "Molecular Pathology": "Molecular_pathology.docx",
-    "NHISSOT (H&I)": "NHISSOT.docx",
     "Test Repertoire": "Test_Repertoire.docx",
     "External Referral": "ExternallyReferrredTests.docx"
 }
