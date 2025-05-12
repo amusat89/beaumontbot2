@@ -331,7 +331,7 @@ def main():
 
     display_chat_history()
     
-    if prompt := st.chat_input("Ask about laboratory protocols..."):
+    if prompt := st.chat_input("Hi, How can i help you 🙂..."):
         handle_user_input(prompt, selected_dept, departments)
 
 def handle_user_input(prompt, department, departments):
