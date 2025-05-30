@@ -20,7 +20,6 @@ BASE_DIR = Path(__file__).parent.absolute()  # Changed to absolute() for cloud c
 LAB_DOCS_DIR = BASE_DIR / "lab_docs"
 DEPARTMENT_FILES = {
     "In House Test": "In_House.docx",
-    "Test Repertoire": "Test_Repertoire.docx",
     "External Referral": "ExternallyReferrredTests.docx"
 }
 
