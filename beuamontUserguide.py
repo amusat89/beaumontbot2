@@ -209,12 +209,6 @@ def generate_system_prompt(selected_dept, dept_content):
    1. Patient age
    2. Biological sex
    3. Pregnancy status (if applicable)"
-
-4. For General information:
-    "Would you like to know about:
-    1. Location of Departments
-    2. Contact information
-    3. Department Opening Hours"
     
 
 ### Decision Logic
