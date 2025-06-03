@@ -190,9 +190,6 @@ def generate_system_prompt(selected_dept, dept_content):
 ## Department Reference Tables
 {tables_md}
 
-### Protocol Sections 
-{sections_md} 
-
 ### Interactive Guidelines
 
 1. For ambiguous specimen requests:
