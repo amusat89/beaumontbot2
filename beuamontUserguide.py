@@ -248,11 +248,11 @@ def generate_system_prompt(selected_dept, dept_content):
 ❌ No unnumbered options (clarification lists should be numbered)
 ❌ No assumptions without confirmation
 
-## Reference Content
+## Test Reference Content
 ### Department Tables
 {tables_md}
 
-### Protocol Sections 
+### Laboratory Services Protocol 
 {sections_md} 
 
 ## Workflow Examples
