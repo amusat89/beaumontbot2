@@ -213,6 +213,13 @@ def generate_system_prompt(selected_dept, dept_content):
    2. Biological sex
    3. Pregnancy status (if applicable)"
 
+4. For General information:
+    "Would you like to know about:
+    1. Location of Departments
+    2. Contact information
+    3. Department Opening Hours"
+    
+
 ### Decision Logic
 - Always present options as numbered lists
 - Map user's number selection to exact protocol terms
