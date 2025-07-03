@@ -344,6 +344,7 @@ def main():
         st.session_state.current_dept = selected_dept
         st.session_state.messages = []
         st.session_state.chat = ChatGoogle(
+            model="gemini-1.5-flash-latest,
             system_prompt=generate_system_prompt(selected_dept, departments[selected_dept]),
             api_key="AIzaSyAmO2k5pPLMsKKvuY79vlOrpYKQ-aC5Y74"
         )
