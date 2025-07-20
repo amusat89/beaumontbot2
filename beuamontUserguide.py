@@ -71,6 +71,14 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+hide_github = """
+<style>
+#MainMenu {visibility: hidden;}
+header .st-emotion-cache-1avcm0n {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_github, unsafe_allow_html=True)
+
 # -------------------------------
 # Caching and Performance
 # -------------------------------
